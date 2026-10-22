@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kawiarnia Młynówka – kawa w Opolu</title>
+<meta name="description" content="Kawiarnia Młynówka w Opolu: świeżo palona kawa, domowe ciasta i śniadania nad kanałem Młynówka.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f5f3; --surface:#e4ebe7; --ink:#18262a; --muted:#4d6065;
+  --river:#256a64; --gold:#e3a72a; --on-river:#f2f5f3; --line:#b9c7c1;
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1a1c; --surface:#17262a; --ink:#e8efec; --muted:#9db0b2;
+    --river:#5fb8ae; --gold:#f0bb45; --on-river:#0f1a1c; --line:#2b4146; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1a1c; --surface:#17262a; --ink:#e8efec; --muted:#9db0b2;
+  --river:#5fb8ae; --gold:#f0bb45; --on-river:#0f1a1c; --line:#2b4146; color-scheme:dark;
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body);-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+header{padding:1.25rem 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.logo{font:800 1.25rem var(--head);text-decoration:none;letter-spacing:-.01em}
+nav{display:flex;gap:1.25rem}
+nav a{text-decoration:none;color:var(--muted);font-weight:600}
+nav a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+
+.hero{padding:clamp(2.5rem,8vw,6rem) 0 clamp(3rem,8vw,5.5rem)}
+.status{display:inline-flex;align-items:center;gap:.6rem;padding:.45rem .95rem;border:2px solid var(--line);border-radius:99px;font-weight:600;font-size:.95rem}
+.dot{width:.7rem;height:.7rem;border-radius:50%;background:var(--muted)}
+.status.open .dot{background:#2f9e5b;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,158,91,.55)}70%,100%{box-shadow:0 0 0 .6rem rgba(47,158,91,0)}}
+h1{font:800 clamp(2.9rem,10.5vw,7.4rem)/.95 var(--head);letter-spacing:-.035em;margin:1.4rem 0 1.5rem;max-width:12ch}
+.lead{max-width:34rem;font-size:1.2rem;color:var(--muted);margin:0 0 2rem}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:.6rem;font-weight:600;text-decoration:none;border:2px solid var(--river)}
+.btn.main{background:var(--river);color:var(--on-river)}
+.btn.main:hover{background:var(--gold);border-color:var(--gold);color:#18262a}
+.btn.alt{color:var(--river)}
+.btn.alt:hover{background:var(--surface)}
+
+section{padding:clamp(3rem,7vw,5rem) 0}
+h2{font:800 clamp(2rem,5vw,3.2rem)/1.05 var(--head);letter-spacing:-.025em;margin:0 0 2rem}
+.board{background:var(--surface);border-radius:1.2rem;padding:clamp(1.5rem,4vw,3rem)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:2.5rem 4rem}
+h3{font:800 1.35rem var(--head);margin:0 0 1rem;color:var(--river)}
+.menu{list-style:none;margin:0;padding:0}
+.menu li{display:flex;align-items:baseline;gap:.6rem;padding:.35rem 0}
+.menu .fill{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-.25rem);min-width:1rem}
+.menu .price{font-weight:600;white-space:nowrap}
+.menu small{display:block;color:var(--muted);font-size:.9rem;line-height:1.35}
+.note{color:var(--muted);margin:1.5rem 0 0;font-size:.95rem}
+
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:2rem 4rem;align-items:start}
+.about p{margin:0 0 1rem;max-width:34rem}
+.facts{margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.facts li{padding:1rem 0;border-bottom:1px solid var(--line)}
+.facts b{display:block;font:800 1.15rem var(--head)}
+
+.hours{width:100%;border-collapse:collapse;max-width:26rem}
+.hours td{padding:.55rem 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-weight:600}
+.hours tr.today td{color:var(--river);font-weight:800}
+address{font-style:normal;margin-bottom:1.5rem}
+.contact p{margin:.2rem 0}
+
+footer{padding:2rem 0 2.5rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){.status.open .dot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Młynówka</a>
+    <nav aria-label="Menu główne">
+      <a href="#menu">Menu</a><a href="#o-nas">O nas</a><a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="status" id="status" role="status"><span class="dot"></span><span id="statusText">Sprawdzamy godziny…</span></div>
+      <h1>Kawa nad Młynówką.</h1>
+      <p class="lead">Mała kawiarnia w sercu Opola. Ziarna palimy w regionie, ciasta pieczemy rano, a espresso parzymy tak, jak lubimy je sami.</p>
+      <div class="btns">
+        <a class="btn main" href="#menu">Zobacz menu</a>
+        <a class="btn alt" href="#kontakt">Jak do nas trafić</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <h2>Menu</h2>
+      <div class="board">
+        <div class="cols">
+          <div>
+            <h3>Kawa</h3>
+            <ul class="menu">
+              <li>Espresso<span class="fill"></span><span class="price">9 zł</span></li>
+              <li>Americano<span class="fill"></span><span class="price">11 zł</span></li>
+              <li>Cappuccino<span class="fill"></span><span class="price">14 zł</span></li>
+              <li>Flat white<span class="fill"></span><span class="price">15 zł</span></li>
+              <li>Latte<span class="fill"></span><span class="price">15 zł</span></li>
+              <li><span>Kawa przelewowa V60<small>ziarno tygodnia, pytaj przy barze</small></span><span class="fill"></span><span class="price">17 zł</span></li>
+              <li>Cold brew<span class="fill"></span><span class="price">16 zł</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Nie tylko kawa</h3>
+            <ul class="menu">
+              <li>Kakao na gorąco<span class="fill"></span><span class="price">15 zł</span></li>
+              <li>Herbata liściasta<span class="fill"></span><span class="price">12 zł</span></li>
+              <li>Lemoniada domowa<span class="fill"></span><span class="price">14 zł</span></li>
+            </ul>
+            <h3 style="margin-top:2rem">Do kawy</h3>
+            <ul class="menu">
+              <li>Sernik na zimno<span class="fill"></span><span class="price">16 zł</span></li>
+              <li>Szarlotka z lodami<span class="fill"></span><span class="price">18 zł</span></li>
+              <li>Croissant z masłem<span class="fill"></span><span class="price">12 zł</span></li>
+              <li>Kanapka z kozim serem<span class="fill"></span><span class="price">22 zł</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">Mleko roślinne (owsiane, sojowe) za 2 zł. Mamy opcje wegańskie i bezglutenowe, zapytaj przy barze.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="o-nas">
+    <div class="wrap about">
+      <div>
+        <h2>O nas</h2>
+        <p>Młynówka to kawiarnia dla ludzi, którzy lubią usiąść na dłużej: z książką, z laptopem albo ze znajomymi po spacerze po opolskiej Wenecji.</p>
+        <p>Pracujemy na małych partiach ziaren od lokalnych palarni i zmieniamy je co tydzień. Ciasta robimy sami, bez gotowych mieszanek.</p>
+      </div>
+      <ul class="facts">
+        <li><b>Świeżo palone ziarno</b>Od palarni z Dolnego i Górnego Śląska.</li>
+        <li><b>Domowe wypieki</b>Pieczone codziennie od rana.</li>
+        <li><b>Przyjazne psom</b>Miska wody czeka przy wejściu.</li>
+        <li><b>Wi-Fi i gniazdka</b>Można zostać na cały dzień.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="kontakt" class="contact">
+    <div class="wrap">
+      <h2>Kontakt</h2>
+      <div class="cols">
+        <div>
+          <h3>Godziny otwarcia</h3>
+          <table class="hours" id="hours">
+            <tr data-d="1"><td>Poniedziałek</td><td>7:30–18:00</td></tr>
+            <tr data-d="2"><td>Wtorek</td><td>7:30–18:00</td></tr>
+            <tr data-d="3"><td>Środa</td><td>7:30–18:00</td></tr>
+            <tr data-d="4"><td>Czwartek</td><td>7:30–18:00</td></tr>
+            <tr data-d="5"><td>Piątek</td><td>7:30–20:00</td></tr>
+            <tr data-d="6"><td>Sobota</td><td>9:00–20:00</td></tr>
+            <tr data-d="0"><td>Niedziela</td><td>10:00–16:00</td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>Znajdziesz nas</h3>
+          <address>ul. Ostrówek 12<br>45-088 Opole</address>
+          <p>Telefon: <a href="tel:+48770000000">+48 77 000 00 00</a></p>
+          <p>E-mail: <a href="mailto:kawa@mlynowka.example">kawa@mlynowka.example</a></p>
+          <p>Instagram: <a href="#kontakt">@kawiarnia.mlynowka</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Kawiarnia Młynówka, Opole</div>
+</footer>
+
+<script>
+(function(){
+  var H={0:[10,0,16,0],1:[7,30,18,0],2:[7,30,18,0],3:[7,30,18,0],4:[7,30,18,0],5:[7,30,20,0],6:[9,0,20,0]};
+  var el=document.getElementById("status"),tx=document.getElementById("statusText");
+  try{
+    var p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Warsaw",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+    var g=function(t){return p.filter(function(x){return x.type===t})[0].value};
+    var d={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[g("weekday")];
+    var m=(parseInt(g("hour"),10)%24)*60+parseInt(g("minute"),10);
+    var h=H[d],o=h[0]*60+h[1],c=h[2]*60+h[3];
+    var row=document.querySelector('#hours tr[data-d="'+d+'"]');
+    if(row)row.className="today";
+    var f=function(a){return Math.floor(a/60)+":"+("0"+a%60).slice(-2)};
+    if(m>=o&&m<c){el.className="status open";tx.textContent="Otwarte teraz, do "+f(c)}
+    else if(m<o){tx.textContent="Zamknięte, otwieramy dziś o "+f(o)}
+    else{var n=H[(d+1)%7];tx.textContent="Zamknięte, jutro otwieramy o "+f(n[0]*60+n[1])}
+  }catch(e){tx.textContent="Zapraszamy codziennie"}
+})();
+</script>
+</body>
+</html>
